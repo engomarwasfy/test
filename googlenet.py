@@ -84,11 +84,7 @@ class Inception2(nn.Module):
             nn.Conv2d(n5x5, n5x5, kernel_size=3),
             nn.BatchNorm2d(n5x5),
             nn.ReLU(True),
-            nn.Conv2d(n5x5, n5x5, kernel_size=3, padding=1),
-            nn.BatchNorm2d(n5x5),
-            nn.ReLU(True),
-           
-            
+      
         )
 
         # 3x3 pool -> 1x1 conv branch
