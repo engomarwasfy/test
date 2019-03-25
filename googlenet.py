@@ -55,7 +55,7 @@ class Inception(nn.Module):
 
 class Inception2(nn.Module):
     def __init__(self, in_planes, n1x1, n3x3red, n3x3, n5x5red, n5x5, pool_planes):
-        super(Inception, self).__init__()
+        super(Inception2, self).__init__()
         # 1x1 conv branch
         self.b1 = nn.Sequential(
             nn.Conv2d(in_planes, n1x1, kernel_size=1),
@@ -158,7 +158,7 @@ class GoogLeNet(nn.Module):
 
 class GoogLeNet2(nn.Module):
     def __init__(self):
-        super(GoogLeNet, self).__init__()
+        super(GoogLeNet2, self).__init__()
         self.pre_layers = nn.Sequential(
             nn.Conv2d(3, 192, kernel_size=3, padding=1),
             nn.BatchNorm2d(192),
