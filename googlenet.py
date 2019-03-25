@@ -184,7 +184,7 @@ class GoogLeNet2(nn.Module):
 
         self.maxpool = nn.MaxPool2d(3, stride=2, padding=1)
 
-        self.a4 = Inception2(480, 192,  96, 208, 16,  48,  64)
+        self.a4 = Inception2(480, 128,  96, 208, 16,  48,  64)
         self.b4 = Inception2(512, 160, 112, 224, 24,  64,  64)
         self.c4 = Inception2(512, 128, 128, 256, 24,  64,  64)
         self.d4 = Inception2(512, 112, 144, 288, 32,  64,  64)
