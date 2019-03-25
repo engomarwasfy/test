@@ -18,7 +18,7 @@ class Inception(nn.Module):
         self.b2 = nn.Sequential(
             nn.Conv2d(in_planes, n3x3red, kernel_size=1),
             nn.BatchNorm2d(n3x3red),
-            nn.ReLU(,,),
+            nn.ReLU(True),
             nn.Conv2d(n3x3red, n3x3, kernel_size=3, padding=1),
             nn.BatchNorm2d(n3x3),
             nn.ReLU(True),
