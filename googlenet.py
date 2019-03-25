@@ -78,7 +78,7 @@ class Inception2(nn.Module):
             nn.Conv2d(in_planes, n5x5red, kernel_size=1),
             nn.BatchNorm2d(n5x5red),
             nn.ReLU(True),
-            nn.Conv2d(n5x5red, n5x5, kernel_size=3, padding=1),
+            nn.Conv2d(n5x5red, n5x5, kernel_size=3, padding=2),
             nn.BatchNorm2d(n5x5),
             nn.ReLU(True),
             nn.Conv2d(n5x5, n5x5, kernel_size=3),
