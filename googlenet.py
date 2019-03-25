@@ -75,38 +75,23 @@ class Inception2(nn.Module):
 
         # 1x1 conv -> 5x5 conv branch
         self.b3 = nn.Sequential(
-            
-            
             nn.Conv2d(in_planes, n5x5red, kernel_size=1),
             nn.BatchNorm2d(n5x5red),
             nn.ReLU(True),
             nn.Conv2d(n5x5red, n5x5, kernel_size=3, padding=1),
             nn.BatchNorm2d(n5x5),
             nn.ReLU(True),
+            nn.Conv2d(n5x5, n5x5, kernel_size=1),
+            nn.BatchNorm2d(n5x5),
+            nn.ReLU(True),
             nn.Conv2d(n5x5, n5x5, kernel_size=3, padding=1),
             nn.BatchNorm2d(n5x5),
             nn.ReLU(True),
-            
-            
-            
-            
-            nn.Conv2d(in_planes, n3x3red, kernel_size=1),
-            nn.BatchNorm2d(n3x3red),
+            nn.Conv2d(n5x5, n5x5, kernel_size=1),
+            nn.BatchNorm2d(n5x5),
             nn.ReLU(True),
-            nn.Conv2d(n3x3red, n3x3, kernel_size=3, padding=1),
-            nn.BatchNorm2d(n3x3),
-            nn.ReLU(True),
-            nn.Conv2d(in_planes, n3x3, kernel_size=1),
-            nn.BatchNorm2d(n3x3),
-            nn.ReLU(True),
-            nn.Conv2d(n3x3red, n3x3, kernel_size=3, padding=1),
-            nn.BatchNorm2d(n3x3),
-            nn.ReLU(True),
-            nn.Conv2d(in_planes, n3x3, kernel_size=1),
-            nn.BatchNorm2d(n3x3),
-            nn.ReLU(True),
-            nn.Conv2d(n3x3red, n3x3, kernel_size=3, padding=1),
-            nn.BatchNorm2d(n3x3),
+            nn.Conv2d(n5x5, n5x5, kernel_size=3, padding=1),
+            nn.BatchNorm2d(n5x5),
             nn.ReLU(True),
         )
 
@@ -129,11 +114,13 @@ class GoogLeNet(nn.Module):
     def __init__(self):
         super(GoogLeNet, self).__init__()
         self.pre_layers = nn.Sequential(
+            #32*32*192
             nn.Conv2d(3, 192, kernel_size=3, padding=1),
             nn.BatchNorm2d(192),
             nn.ReLU(True),
         )
 
+        
         self.a3 = Inception(192,  64,  96, 128, 16, 32, 32)
         self.b3 = Inception(256, 128, 128, 192, 32, 96, 64)
 
