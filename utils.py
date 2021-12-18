@@ -57,7 +57,7 @@ def progress_bar(current, total, msg=None):
     rest_len = int(TOTAL_BAR_LENGTH - cur_len) - 1
 
     sys.stdout.write(' [')
-    for i in range(cur_len):
+    for _ in range(cur_len):
         sys.stdout.write('=')
     sys.stdout.write('>')
     for i in range(rest_len):
@@ -69,19 +69,18 @@ def progress_bar(current, total, msg=None):
     last_time = cur_time
     tot_time = cur_time - begin_time
 
-    L = []
-    L.append('  Step: %s' % format_time(step_time))
+    L = ['  Step: %s' % format_time(step_time)]
     L.append(' | Tot: %s' % format_time(tot_time))
     if msg:
         L.append(' | ' + msg)
 
     msg = ''.join(L)
     sys.stdout.write(msg)
-    for i in range(term_width-int(TOTAL_BAR_LENGTH)-len(msg)-3):
+    for _ in range(term_width-int(TOTAL_BAR_LENGTH)-len(msg)-3):
         sys.stdout.write(' ')
 
     # Go back to the center of the bar.
-    for i in range(term_width-int(TOTAL_BAR_LENGTH/2)+2):
+    for _ in range(term_width-int(TOTAL_BAR_LENGTH/2)+2):
         sys.stdout.write('\b')
     sys.stdout.write(' %d/%d ' % (current+1, total))
 
